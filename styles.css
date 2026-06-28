@@ -239,7 +239,10 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .cta-card h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); margin-bottom: 14px; }
 .cta-card > p { color: var(--muted); font-size: 1.1rem; max-width: 48ch; margin-inline: auto; }
 .cta-card .hero-actions { margin: 30px 0 0; }
-.cta-fine { margin-top: 18px; font-size: .85rem; color: var(--muted-2); }
+.cta-contact { margin-top: 20px; font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; }
+.cta-contact a { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cta-contact a:hover { opacity: .82; }
+.cta-fine { margin-top: 12px; font-size: .85rem; color: var(--muted-2); }
 
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--brd); padding: 44px 0; }
