@@ -469,14 +469,52 @@
       <div class="container">
         <div class="cta-card reveal">
           <div class="glow-ring" aria-hidden="true"></div>
-          <h2>Pregătit să treci de la haos la control?</h2>
-          <p>Îți arătăm Evora pe businessul tău, într-o demonstrație de 20 de minute.</p>
-          <div class="hero-actions center">
-            <a class="btn btn-primary btn-lg" href="mailto:office@evo-node.ro?subject=Cerere%20demonstrație%20Evora">Cere o demonstrație</a>
-            <a class="btn btn-ghost btn-lg" href="#functii">Revezi funcțiile</a>
+          <div class="cta-grid">
+            <div class="cta-intro">
+              <h2>Programează un demo Evora</h2>
+              <p>Îți arătăm platforma pe businessul tău, într-o demonstrație de ~20 de minute. Fără obligații.</p>
+              <ul class="cta-points">
+                <li>✓ Configurare pe locațiile tale</li>
+                <li>✓ Flux complet: client → rezervare → notificare</li>
+                <li>✓ Răspuns în aceeași zi lucrătoare</li>
+              </ul>
+              <p class="cta-contact"><a href="tel:+40752173276">0752 173 276</a> &nbsp;·&nbsp; <a href="mailto:office@evo-node.ro">office@evo-node.ro</a></p>
+            </div>
+
+            <form class="demo-form" id="demoForm" novalidate>
+              <div class="field">
+                <label for="f-name">Nume</label>
+                <input id="f-name" name="name" type="text" required placeholder="Numele tău" />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="f-email">Email</label>
+                  <input id="f-email" name="email" type="email" required placeholder="email@exemplu.ro" />
+                </div>
+                <div class="field">
+                  <label for="f-phone">Telefon</label>
+                  <input id="f-phone" name="phone" type="tel" placeholder="07xx xxx xxx" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-type">Tip business</label>
+                <select id="f-type" name="business_type">
+                  <option>Barbershop</option>
+                  <option>Salon</option>
+                  <option>Spa</option>
+                  <option>Clinică beauty</option>
+                  <option>Altul</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-msg">Mesaj (opțional)</label>
+                <textarea id="f-msg" name="message" rows="3" placeholder="Câte locații, câți specialiști, ce te interesează…"></textarea>
+              </div>
+              <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <button type="submit" class="btn btn-primary btn-lg form-submit">Cere demo</button>
+              <p class="form-note" id="formNote" role="status"></p>
+            </form>
           </div>
-          <p class="cta-contact"><a href="tel:+40752173276">0752 173 276</a> &nbsp;·&nbsp; <a href="mailto:office@evo-node.ro">office@evo-node.ro</a></p>
-          <p class="cta-fine">Răspundem în aceeași zi lucrătoare.</p>
         </div>
       </div>
     </section>
@@ -503,6 +541,14 @@
       <p class="copy">© <span id="year">2026</span> EvoNode CO. Toate drepturile rezervate.</p>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lb-btn lb-close" id="lbClose" aria-label="Închide">×</button>
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <img id="lbImg" src="" alt="" />
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Următor">›</button>
+  </div>
 
   <script src="script.js"></script>
 </body>

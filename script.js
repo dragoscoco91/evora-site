@@ -85,4 +85,84 @@
     );
     sections.forEach(function (s) { spy.observe(s); });
   }
+
+  // ----- Lightbox (click images to enlarge) -----
+  var zoomables = Array.prototype.slice.call(
+    document.querySelectorAll("#galerie img, .feature-row .phone img, .feature-row .browser img")
+  );
+  var lb = document.getElementById("lightbox");
+  if (lb && zoomables.length) {
+    var lbImg = document.getElementById("lbImg");
+    var idx = 0;
+    function lbOpen(i) {
+      idx = (i + zoomables.length) % zoomables.length;
+      lbImg.src = zoomables[idx].currentSrc || zoomables[idx].src;
+      lbImg.alt = zoomables[idx].alt || "";
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function lbClose() { lb.classList.remove("open"); document.body.style.overflow = ""; }
+    zoomables.forEach(function (img, i) {
+      img.addEventListener("click", function () { lbOpen(i); });
+    });
+    document.getElementById("lbClose").addEventListener("click", lbClose);
+    document.getElementById("lbPrev").addEventListener("click", function (e) { e.stopPropagation(); lbOpen(idx - 1); });
+    document.getElementById("lbNext").addEventListener("click", function (e) { e.stopPropagation(); lbOpen(idx + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb) lbClose(); });
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") lbClose();
+      else if (e.key === "ArrowLeft") lbOpen(idx - 1);
+      else if (e.key === "ArrowRight") lbOpen(idx + 1);
+    });
+  }
+
+  // ----- Demo form (FormSubmit — no backend) -----
+  var demoForm = document.getElementById("demoForm");
+  if (demoForm) {
+    demoForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var el = demoForm.elements;
+      var note = document.getElementById("formNote");
+      var btn = demoForm.querySelector(".form-submit");
+      if (el["_honey"] && el["_honey"].value) return; // spam honeypot
+      if (!demoForm.checkValidity()) { demoForm.reportValidity(); return; }
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = "Se trimite…";
+      if (note) { note.textContent = ""; note.classList.remove("err"); }
+      var payload = {
+        name: el["name"].value,
+        email: el["email"].value,
+        phone: el["phone"].value,
+        business_type: el["business_type"].value,
+        message: el["message"].value,
+        _subject: "Cerere demo Evora — " + el["name"].value,
+        _template: "table"
+      };
+      fetch("https://formsubmit.co/ajax/office@evo-node.ro", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(function (r) {
+          return r.json().then(function (j) { return { ok: r.ok, j: j }; }, function () { return { ok: r.ok, j: {} }; });
+        })
+        .then(function (res) {
+          if (res.ok && (res.j.success === "true" || res.j.success === true)) {
+            demoForm.innerHTML =
+              '<div class="form-success"><div class="fs-ic">✓</div><h3>Mulțumim!</h3>' +
+              "<p>Ți-am primit cererea — te contactăm în aceeași zi lucrătoare.</p></div>";
+          } else { throw new Error("fail"); }
+        })
+        .catch(function () {
+          btn.disabled = false; btn.textContent = label;
+          if (note) {
+            note.innerHTML =
+              'Nu am putut trimite acum. Scrie-ne la <a href="mailto:office@evo-node.ro">office@evo-node.ro</a> ' +
+              'sau sună la <a href="tel:+40752173276">0752 173 276</a>.';
+            note.classList.add("err");
+          }
+        });
+    });
+  }
 })();
