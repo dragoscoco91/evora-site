@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8" />
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@600;700&display=swap");
+  * { margin: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    font-family: "Inter", sans-serif; color: #f4f5fb; position: relative; overflow: hidden;
+    background:
+      radial-gradient(700px 500px at 85% -10%, rgba(124,58,237,.45), transparent 60%),
+      radial-gradient(600px 460px at 0% 110%, rgba(34,211,238,.30), transparent 55%),
+      radial-gradient(500px 400px at 60% 120%, rgba(236,72,153,.35), transparent 55%),
+      #08080c;
+    padding: 86px 90px; display: flex; flex-direction: column; justify-content: center; gap: 26px;
+  }
+  .brand { display: flex; align-items: center; gap: 16px; }
+  .mark { width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center;
+    background: linear-gradient(120deg,#7c3aed,#ec4899 52%,#22d3ee); font-family: "Space Grotesk"; font-weight: 700; font-size: 38px; color: #fff;
+    box-shadow: 0 24px 60px -16px rgba(124,58,237,.8); }
+  .bname { font-family: "Space Grotesk"; font-weight: 700; font-size: 40px; letter-spacing: -.02em; }
+  .by { font-size: 18px; color: #9c9cb0; align-self: flex-end; padding-bottom: 8px; }
+  h1 { font-family: "Space Grotesk"; font-weight: 700; font-size: 78px; line-height: 1.04; letter-spacing: -.03em; max-width: 16ch; }
+  .grad { background: linear-gradient(120deg,#a78bfa,#f472b6 52%,#67e8f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  p { font-size: 26px; color: #b9b9c9; max-width: 40ch; }
+  .pills { display: flex; gap: 12px; margin-top: 8px; }
+  .pills span { font-family: "Space Grotesk"; font-weight: 600; font-size: 19px; color: #cfcfda; padding: 9px 20px; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; background: rgba(255,255,255,.04); }
+</style>
+</head>
+<body>
+  <div class="brand">
+    <span class="mark">E</span>
+    <span class="bname">Evora</span>
+    <span class="by">by EvoNode&nbsp;CO</span>
+  </div>
+  <h1>Programări fără haos. <span class="grad">Afacere sub control.</span></h1>
+  <p>Platforma completă de rezervări și operare pentru afaceri cu servicii.</p>
+  <div class="pills"><span>Rezervări online</span><span>Calendar &amp; rapoarte</span><span>Aplicații mobile</span></div>
+</body>
+</html>

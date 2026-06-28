@@ -51,4 +51,38 @@
   } else {
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
+
+  // Scroll progress bar
+  var bar = document.getElementById("progress");
+  function progress() {
+    if (!bar) return;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+  }
+  progress();
+  window.addEventListener("scroll", progress, { passive: true });
+  window.addEventListener("resize", progress);
+
+  // Active nav link while scrolling
+  var navMap = {};
+  document.querySelectorAll(".nav-links a").forEach(function (a) {
+    navMap[a.getAttribute("href").replace("#", "")] = a;
+  });
+  var sections = Object.keys(navMap)
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  if ("IntersectionObserver" in window && sections.length) {
+    var spy = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && navMap[e.target.id]) {
+            Object.keys(navMap).forEach(function (k) { navMap[k].classList.remove("active"); });
+            navMap[e.target.id].classList.add("active");
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    sections.forEach(function (s) { spy.observe(s); });
+  }
 })();

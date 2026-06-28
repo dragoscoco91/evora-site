@@ -252,6 +252,12 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .foot-links a:hover { color: var(--text); }
 .copy { color: var(--muted-2); font-size: .85rem; }
 
+/* ---------- Scroll progress + active nav ---------- */
+.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--grad); z-index: 60; transition: width .12s linear; box-shadow: 0 0 12px rgba(236,72,153,.6); }
+.nav-links a { position: relative; }
+.nav-links a.active { color: var(--text); }
+.nav-links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -7px; height: 2px; border-radius: 2px; background: var(--grad); }
+
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
 .reveal.in { opacity: 1; transform: none; }
