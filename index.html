@@ -497,14 +497,21 @@
                 </div>
               </div>
               <div class="field">
-                <label for="f-type">Tip business</label>
-                <select id="f-type" name="business_type">
-                  <option>Barbershop</option>
-                  <option>Salon</option>
-                  <option>Spa</option>
-                  <option>Clinică beauty</option>
-                  <option>Altul</option>
-                </select>
+                <label id="f-type-label">Tip business</label>
+                <div class="select" id="bizSelect">
+                  <button type="button" class="select-btn" id="bizBtn" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="f-type-label">
+                    <span id="bizValue">Barbershop</span>
+                    <svg class="select-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                  <ul class="select-list" id="bizList" role="listbox" tabindex="-1">
+                    <li role="option" data-value="Barbershop" class="is-selected">Barbershop</li>
+                    <li role="option" data-value="Salon">Salon</li>
+                    <li role="option" data-value="Spa">Spa</li>
+                    <li role="option" data-value="Clinică beauty">Clinică beauty</li>
+                    <li role="option" data-value="Altul">Altul</li>
+                  </ul>
+                  <input type="hidden" name="business_type" id="bizInput" value="Barbershop" />
+                </div>
               </div>
               <div class="field">
                 <label for="f-msg">Mesaj (opțional)</label>

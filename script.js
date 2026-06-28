@@ -117,6 +117,32 @@
     });
   }
 
+  // ----- Custom dropdown(s) -----
+  document.querySelectorAll(".select").forEach(function (sel) {
+    var btn = sel.querySelector(".select-btn");
+    var list = sel.querySelector(".select-list");
+    var valueEl = btn.querySelector("span");
+    var input = sel.querySelector('input[type="hidden"]');
+    if (!btn || !list) return;
+    function close() { sel.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+    function open() { sel.classList.add("open"); btn.setAttribute("aria-expanded", "true"); }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      sel.classList.contains("open") ? close() : open();
+    });
+    list.querySelectorAll("li").forEach(function (li) {
+      li.addEventListener("click", function () {
+        list.querySelectorAll("li").forEach(function (x) { x.classList.remove("is-selected"); });
+        li.classList.add("is-selected");
+        if (valueEl) valueEl.textContent = li.textContent;
+        if (input) input.value = li.getAttribute("data-value") || li.textContent;
+        close();
+      });
+    });
+    document.addEventListener("click", function (e) { if (!sel.contains(e.target)) close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  });
+
   // ----- Demo form (FormSubmit — no backend) -----
   var demoForm = document.getElementById("demoForm");
   if (demoForm) {
