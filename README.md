@@ -1,6 +1,6 @@
-# Evora — site de prezentare
+# EvoSlot — site de prezentare
 
-Landing/presentation site for **Evora**, a booking & operations platform for
+Landing/presentation site for **EvoSlot**, a booking & operations platform for
 service businesses (barbershops, salons, spas, beauty clinics). A product of
 **EvoNode CO**.
 
