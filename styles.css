@@ -252,6 +252,17 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .foot-links a:hover { color: var(--text); }
 .copy { color: var(--muted-2); font-size: .85rem; }
 
+/* ---------- Video showcase ---------- */
+.showcase { position: relative; display: grid; grid-template-columns: 1.5fr .62fr; gap: 34px; align-items: center; }
+.showcase .browser video { display: block; width: 100%; }
+.showcase .phone { width: 250px; justify-self: center; box-shadow: var(--glow), 0 40px 80px -30px rgba(0,0,0,.85); }
+.showcase .phone video { display: block; width: 100%; border-radius: 26px; }
+@media (max-width: 860px) { .showcase { grid-template-columns: 1fr; gap: 28px; } .showcase .phone { width: 220px; } }
+
+/* ---------- Gallery ---------- */
+.gallery { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; }
+.gallery .phone.sm { width: 188px; }
+
 /* ---------- Scroll progress + active nav ---------- */
 .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--grad); z-index: 60; transition: width .12s linear; box-shadow: 0 0 12px rgba(236,72,153,.6); }
 .nav-links a { position: relative; }
