@@ -1,4 +1,4 @@
-# EvoSlot — static site (Apache/LiteSpeed on DirectAdmin)
+# EvoBook — static site (Apache/LiteSpeed on DirectAdmin)
 
 # Force HTTPS
 RewriteEngine On

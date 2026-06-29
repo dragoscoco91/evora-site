@@ -1,4 +1,4 @@
-// EvoSlot landing — interactions
+// EvoBook landing — interactions
 (function () {
   "use strict";
 
@@ -162,7 +162,7 @@
         phone: el["phone"].value,
         business_type: el["business_type"].value,
         message: el["message"].value,
-        _subject: "Cerere demo EvoSlot — " + el["name"].value,
+        _subject: "Cerere demo EvoBook — " + el["name"].value,
         _template: "table"
       };
       fetch("https://formsubmit.co/ajax/office@evo-node.ro", {

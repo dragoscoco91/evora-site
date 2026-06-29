@@ -1,6 +1,6 @@
-# EvoSlot — site de prezentare
+# EvoBook — site de prezentare
 
-Landing/presentation site for **EvoSlot**, a booking & operations platform for
+Landing/presentation site for **EvoBook**, a booking & operations platform for
 service businesses (barbershops, salons, spas, beauty clinics). A product of
 **EvoNode CO**.
 
